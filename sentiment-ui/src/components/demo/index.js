@@ -11,7 +11,7 @@ export default function Demo() {
     };
     function handleClick() {
         if (inputValue.length > 10) {
-            fetch('http://localhost:3004/sentiment?text=' + inputValue, {
+            fetch('http://143.198.126.111:3004/sentiment?text=' + inputValue, {
                 method: 'GET', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
