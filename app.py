@@ -1,9 +1,10 @@
 from flask import Flask, send_from_directory
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS #comment this on deployment
-from api.test import TestApiHandler
+from api.test import AzureAPIHandler
+# import json
 
-app = Flask(__name__, static_url_path='', static_folder='build')
+app = Flask(__name__, static_url_path='', static_folder='sentiment-ui/build')
 CORS(app) #comment this on deployment
 api = Api(app)
 
@@ -11,4 +12,4 @@ api = Api(app)
 def serve(path):
     return send_from_directory(app.static_folder,'index.html')
 
-api.add_resource(TestApiHandler, '/flask/hello')
+api.add_resource(AzureAPIHandler, '/sentiment')

@@ -1,35 +1,41 @@
-from flask_restful import Api, Resource, reqparse
+import os
+from flask import make_response,jsonify
+from flask_restful import Api, Resource, reqparse,request
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.textanalytics import TextAnalyticsClient
+from dotenv import load_dotenv
+load_dotenv()
 
-class TestApiHandler(Resource):
+class AzureAPIHandler(Resource):
+  def __init__(self):
+    self.hash_val = os.getenv('hash_val')
+    self.credential = AzureKeyCredential(self.hash_val)
+    self.text_analytics_client = TextAnalyticsClient(endpoint="https://itis-final-project.cognitiveservices.azure.com/", credential=self.credential)
+    super().__init__()
+
   def get(self):
-    return {
-      'resultStatus': 'SUCCESS',
-      'message': "Hello Api Handler"
-      }
-
-  def post(self):
-    print(self)
-    parser = reqparse.RequestParser()
-    parser.add_argument('type', type=str)
-    parser.add_argument('message', type=str)
-
-    args = parser.parse_args()
-
-    print(args)
-    # note, the post req from frontend needs to match the strings here (e.g. 'type and 'message')
-
-    request_type = args['type']
-    request_json = args['message']
-    # ret_status, ret_msg = ReturnData(request_type, request_json)
-    # currently just returning the req straight
-    ret_status = request_type
-    ret_msg = request_json
-
-    if ret_msg:
-      message = "Your Message Requested: {}".format(ret_msg)
+    input_text = request.args.get("text")
+    response = self.text_analytics_client.analyze_sentiment([input_text])
+    if not response and len(response)>0:
+      response = make_response(
+                jsonify(
+                    {"message": "Internal server error", "severity": "danger"}
+                ),
+                500,
+            )
     else:
-      message = "No Msg"
-    
-    final_ret = {"status": "Success", "message": message}
-
-    return final_ret
+      doc_res = response.pop()
+      response = make_response(
+                jsonify(
+                    {"message": "Azure sentiment API response",
+                    "document_sentiment":{
+                      "overall_sentiment":doc_res['sentiment'],
+                      "positive":doc_res['confidence_scores']['positive'],
+                      "neutral":doc_res['confidence_scores']['neutral'],
+                      "negative":doc_res['confidence_scores']['negative'],
+                    }}
+                ),
+                200,
+            ) 
+    response.headers["Content-Type"] = "application/json"
+    return response

@@ -1,0 +1,25 @@
+.card
+{
+    background-color: transparent !important;
+}
+
+.has-text-green
+{
+    color: #058ED9 !important;
+}
+
+.card-content
+{
+    background-color: #483D3F !important;
+}
+
+.card:hover
+{
+    opacity: 80% !important;
+}
+
+.hero.is-link
+{
+    background-color: #483D3F !important;
+    color: #058ED9 !important;
+}
