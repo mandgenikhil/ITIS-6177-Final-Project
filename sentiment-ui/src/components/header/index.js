@@ -17,9 +17,6 @@ export default function Header() {
                 </div>
 
                 <div className="navbar-end">
-                        <a href="#demo" className="navbar-item is-family-monospace is-link">
-                            Demo
-                        </a>
                         <a href="#demo" className="navbar-item is-family-monospace">
                             Try it out
                         </a>

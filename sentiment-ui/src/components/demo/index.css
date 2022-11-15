@@ -23,3 +23,16 @@
     background-color: #483D3F !important;
     color: #058ED9 !important;
 }
+
+.positive_ic
+{
+    color: rgb(7, 146, 7);
+}
+.neutral_ic
+{
+    color: rgb(226, 226, 16);
+}
+.negative_ic
+{
+    color: rgb(180, 7, 7);
+}

@@ -30,9 +30,9 @@ class AzureAPIHandler(Resource):
                     {"message": "Azure sentiment API response",
                     "document_sentiment":{
                       "overall_sentiment":doc_res['sentiment'],
-                      "positive":doc_res['confidence_scores']['positive'],
-                      "neutral":doc_res['confidence_scores']['neutral'],
-                      "negative":doc_res['confidence_scores']['negative'],
+                      "positive":doc_res['confidence_scores']['positive']*100,
+                      "neutral":doc_res['confidence_scores']['neutral']*100,
+                      "negative":doc_res['confidence_scores']['negative']*100,
                     }}
                 ),
                 200,
