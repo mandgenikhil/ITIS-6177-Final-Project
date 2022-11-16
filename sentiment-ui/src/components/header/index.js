@@ -20,8 +20,8 @@ export default function Header() {
                         <a href="#demo" className="navbar-item is-family-monospace">
                             Try it out
                         </a>
-                        <a href="#refference" className="navbar-item is-family-monospace">
-                            Refferece
+                        <a href="#reference" className="navbar-item is-family-monospace">
+                        Reference
                         </a>
                 </div>
             </div>

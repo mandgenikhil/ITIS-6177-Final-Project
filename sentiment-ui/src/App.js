@@ -3,6 +3,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Hero from './components/hero';
 import Demo from './components/demo';
+import Reference from './components/reference';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
       <Hero />
       <Demo />
+      <Reference />
       <Footer />
     </div>
   );
