@@ -16,7 +16,7 @@ class AzureAPIHandler(Resource):
   def get(self):
     input_text = request.args.get("text")
     response = self.text_analytics_client.analyze_sentiment([input_text])
-    if not response and len(response)>0:
+    if not response or len(response) == 0:
       response = make_response(
                 jsonify(
                     {"message": "Internal server error", "severity": "danger"}
