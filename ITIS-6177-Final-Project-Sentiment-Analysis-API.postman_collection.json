@@ -1,0 +1,50 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ITIS-6177-Final-Project-Sentiment-Analysis-API",
+		"_postman_id": "7c1f9d07-8d9b-8fd4-0463-5578af4b5804",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sentiment Analysis API Request",
+			"request": {
+				"url": {
+					"raw": "http://143.198.126.111:3004/sentiment?text=India won the game",
+					"protocol": "http",
+					"host": [
+						"143",
+						"198",
+						"126",
+						"111"
+					],
+					"port": "3004",
+					"path": [
+						"sentiment"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "India won the game",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "BEARER eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MzQ1OTkxNDYsImV4cCI6MTY2NjEzNTE0NiwianRpIjoiMTJvVFJzTU1MSG1KOFdCY04zS0R4RiIsInVzZXIiOjIzfQ.VE07cYrnMJLOk5q7qDloNwhYjZM2nxzHDRCzDItW7IA",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Sentiment Analysis API Request"
+			},
+			"response": []
+		}
+	]
+}
